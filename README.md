@@ -94,4 +94,13 @@ GymSathi provides general fitness information, not medical advice. The onboardin
 ## License
 
 This project is prepared as a private pilot repository. Add the license that matches your ownership and distribution decision before making the repository public.
+## Quick start after setup
+
+Once `.env.local` has been created and the schema has been pushed, daily startup is one command:
+
+~~~powershell
+.\start-dev.cmd
+~~~
+
+The launcher automatically installs dependencies only when `node_modules` is missing, then starts Next.js. Stop it with Ctrl+C.
 
