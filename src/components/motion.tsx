@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
@@ -36,3 +36,4 @@ export function PointerGlow() {
   }, []);
   return <div ref={ref} aria-hidden="true" className="pointer-events-none fixed left-0 top-0 z-0 hidden h-[520px] w-[520px] rounded-full bg-[#c7f36b]/[0.045] blur-3xl transition-transform duration-700 ease-out lg:block" />;
 }
+

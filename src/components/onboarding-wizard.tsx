@@ -131,7 +131,7 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
               onClick={() => chooseLang(l)}
               className={`px-3 py-1 text-xs font-semibold ${lang === l ? "bg-lime-400 text-slate-950" : "text-slate-300"}`}
             >
-              {l === "en" ? "EN" : "à¦¬à¦¾à¦‚à¦²à¦¾"}
+              {l === "en" ? "EN" : "BN"}
             </button>
           ))}
         </div>
@@ -302,3 +302,4 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
     </div>
   );
 }
+

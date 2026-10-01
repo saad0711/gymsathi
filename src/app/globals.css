@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   color-scheme: dark;
@@ -67,8 +67,9 @@ details > summary::-webkit-details-marker { display: none; }
 }
 .shine:hover::after { transform: translateX(110%); }
 
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1); }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 1; transform: translateY(0); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1); }
+.reveal.reveal-armed { opacity: 0; transform: translateY(18px); }
+.reveal.reveal-armed.is-visible { opacity: 1; transform: translateY(0); }
 .float-slow { animation: float-slow 8s ease-in-out infinite; }
 .pulse-dot { animation: pulse-dot 2.1s ease-in-out infinite; }
 .marquee-track { animation: marquee 26s linear infinite; }
@@ -81,3 +82,5 @@ details > summary::-webkit-details-marker { display: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
