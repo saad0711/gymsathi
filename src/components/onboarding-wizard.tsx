@@ -302,4 +302,3 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
     </div>
   );
 }
-

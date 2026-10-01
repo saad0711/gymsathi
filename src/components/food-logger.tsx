@@ -151,4 +151,3 @@ export function Hydration({ lang, glasses }: { lang: Lang; glasses: number }) {
     </div>
   );
 }
-

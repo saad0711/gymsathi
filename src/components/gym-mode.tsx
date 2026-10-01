@@ -498,4 +498,3 @@ export function GymMode(p: Props) {
     </div>
   );
 }
-

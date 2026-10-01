@@ -14,4 +14,3 @@ export function LangToggle({ lang }: { lang: Lang }) {
     {(["en", "bn"] as Lang[]).map((l) => <button key={l} onClick={() => set(l)} className={"rounded-lg px-2.5 py-1.5 text-[10px] font-bold tracking-[0.12em] transition " + (lang === l ? "bg-[#c7f36b] text-[#08100f]" : "text-[#8f9b96] hover:text-white")}>{l === "en" ? "EN" : "à¦¬à¦¾à¦‚à¦²à¦¾"}</button>)}
   </div>;
 }
-
