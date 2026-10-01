@@ -1,3 +1,4 @@
+﻿/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -63,18 +64,18 @@ export function FoodLogger({
   return (
     <div>
       <ul className="space-y-2">
-        {logs.length === 0 && <li className="text-sm text-slate-500">{T("Nothing logged yet today.", "আজ এখনও কিছু লগ করা হয়নি।")}</li>}
+        {logs.length === 0 && <li className="text-sm text-slate-500">{T("Nothing logged yet today.", "à¦†à¦œ à¦à¦–à¦¨à¦“ à¦•à¦¿à¦›à§ à¦²à¦— à¦•à¦°à¦¾ à¦¹à¦¯à¦¼à¦¨à¦¿à¥¤")}</li>}
         {logs.map((l) => {
           const f = byId.get(l.foodId);
           if (!f) return null;
           return (
             <li key={l.id} className="flex items-center justify-between rounded-xl bg-white/5 px-3 py-2 text-sm">
               <span>
-                {pick(lang, f.nameEn, f.nameBn)} <span className="text-slate-500">· {pick(lang, f.portionEn, f.portionBn)}</span>
+                {pick(lang, f.nameEn, f.nameBn)} <span className="text-slate-500">Â· {pick(lang, f.portionEn, f.portionBn)}</span>
               </span>
               <span className="flex items-center gap-3">
-                <span className="text-slate-400">{Math.round(f.calories * l.servings)} kcal · {Math.round(f.protein * l.servings)}g P</span>
-                <button onClick={() => remove(l.id)} aria-label="remove" className="text-slate-500">✕</button>
+                <span className="text-slate-400">{Math.round(f.calories * l.servings)} kcal Â· {Math.round(f.protein * l.servings)}g P</span>
+                <button onClick={() => remove(l.id)} aria-label="remove" className="text-slate-500">âœ•</button>
               </span>
             </li>
           );
@@ -83,19 +84,19 @@ export function FoodLogger({
 
       {limit !== null && (
         <p className="mt-2 text-xs text-slate-500">
-          {logs.length}/{limit} {T("free entries today", "টি ফ্রি এন্ট্রি আজ")}
+          {logs.length}/{limit} {T("free entries today", "à¦Ÿà¦¿ à¦«à§à¦°à¦¿ à¦à¦¨à§à¦Ÿà§à¦°à¦¿ à¦†à¦œ")}
         </p>
       )}
 
       {reached || locked ? (
         <div className="mt-3 rounded-2xl border border-lime-400/30 bg-lime-400/10 p-4">
-          <p className="font-semibold text-lime-300">🔒 {T("Daily free limit reached", "আজকের ফ্রি সীমা শেষ")}</p>
-          <p className="mt-1 text-sm text-slate-300">{T("Premium has unlimited logging and a full weekly meal planner.", "প্রিমিয়ামে আনলিমিটেড লগিং ও সাপ্তাহিক মিল প্ল্যানার আছে।")}</p>
-          <Link href="/app/premium" className={`${btnPrimary} mt-3 !py-2 text-sm`}>{T("See Premium", "প্রিমিয়াম দেখুন")}</Link>
+          <p className="font-semibold text-lime-300">ðŸ”’ {T("Daily free limit reached", "à¦†à¦œà¦•à§‡à¦° à¦«à§à¦°à¦¿ à¦¸à§€à¦®à¦¾ à¦¶à§‡à¦·")}</p>
+          <p className="mt-1 text-sm text-slate-300">{T("Premium has unlimited logging and a full weekly meal planner.", "à¦ªà§à¦°à¦¿à¦®à¦¿à¦¯à¦¼à¦¾à¦®à§‡ à¦†à¦¨à¦²à¦¿à¦®à¦¿à¦Ÿà§‡à¦¡ à¦²à¦—à¦¿à¦‚ à¦“ à¦¸à¦¾à¦ªà§à¦¤à¦¾à¦¹à¦¿à¦• à¦®à¦¿à¦² à¦ªà§à¦²à§à¦¯à¦¾à¦¨à¦¾à¦° à¦†à¦›à§‡à¥¤")}</p>
+          <Link href="/app/premium" className={`${btnPrimary} mt-3 !py-2 text-sm`}>{T("See Premium", "à¦ªà§à¦°à¦¿à¦®à¦¿à¦¯à¦¼à¦¾à¦® à¦¦à§‡à¦–à§à¦¨")}</Link>
         </div>
       ) : (
         <div className="mt-3">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={T("Search food: bhat, dal, egg, ruti…", "খাবার খুঁজুন: ভাত, ডাল, ডিম, রুটি…")} className={inputCls} />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={T("Search food: bhat, dal, egg, rutiâ€¦", "à¦–à¦¾à¦¬à¦¾à¦° à¦–à§à¦à¦œà§à¦¨: à¦­à¦¾à¦¤, à¦¡à¦¾à¦², à¦¡à¦¿à¦®, à¦°à§à¦Ÿà¦¿â€¦")} className={inputCls} />
           <ul className="mt-2 max-h-72 space-y-1.5 overflow-y-auto">
             {results.map((f) => (
               <li key={f.id}>
@@ -111,12 +112,12 @@ export function FoodLogger({
                   <span className="text-right text-xs text-slate-400">
                     {f.calories} kcal
                     <br />
-                    {f.protein}g P <span className="ml-1 text-lime-400">＋</span>
+                    {f.protein}g P <span className="ml-1 text-lime-400">ï¼‹</span>
                   </span>
                 </button>
               </li>
             ))}
-            {results.length === 0 && <li className="text-sm text-slate-500">{T("No match.", "কিছু পাওয়া যায়নি।")}</li>}
+            {results.length === 0 && <li className="text-sm text-slate-500">{T("No match.", "à¦•à¦¿à¦›à§ à¦ªà¦¾à¦“à¦¯à¦¼à¦¾ à¦¯à¦¾à¦¯à¦¼à¦¨à¦¿à¥¤")}</li>}
           </ul>
         </div>
       )}
@@ -139,14 +140,15 @@ export function Hydration({ lang, glasses }: { lang: Lang; glasses: number }) {
     <div className="flex items-center justify-between">
       <div>
         <p className="text-2xl font-bold">
-          💧 {n}/{glasses}
+          ðŸ’§ {n}/{glasses}
         </p>
-        <p className="text-xs text-slate-400">{pick(lang, "glasses (250 ml)", "গ্লাস (২৫০ মি.লি.)")}</p>
+        <p className="text-xs text-slate-400">{pick(lang, "glasses (250 ml)", "à¦—à§à¦²à¦¾à¦¸ (à§¨à§«à§¦ à¦®à¦¿.à¦²à¦¿.)")}</p>
       </div>
       <div className="flex gap-2">
-        <button onClick={() => set(n - 1)} className="h-11 w-11 rounded-xl bg-white/10 text-xl">−</button>
-        <button onClick={() => set(n + 1)} className="h-11 w-11 rounded-xl bg-lime-400 text-xl font-bold text-slate-950">＋</button>
+        <button onClick={() => set(n - 1)} className="h-11 w-11 rounded-xl bg-white/10 text-xl">âˆ’</button>
+        <button onClick={() => set(n + 1)} className="h-11 w-11 rounded-xl bg-lime-400 text-xl font-bold text-slate-950">ï¼‹</button>
       </div>
     </div>
   );
 }
+

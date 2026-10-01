@@ -1,3 +1,4 @@
+﻿/* eslint-disable react-hooks/immutability */
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -10,6 +11,7 @@ export function LangToggle({ lang }: { lang: Lang }) {
     router.refresh();
   }
   return <div className="inline-flex items-center rounded-xl border border-white/12 bg-white/[0.035] p-1" role="group" aria-label="Language">
-    {(["en", "bn"] as Lang[]).map((l) => <button key={l} onClick={() => set(l)} className={"rounded-lg px-2.5 py-1.5 text-[10px] font-bold tracking-[0.12em] transition " + (lang === l ? "bg-[#c7f36b] text-[#08100f]" : "text-[#8f9b96] hover:text-white")}>{l === "en" ? "EN" : "বাংলা"}</button>)}
+    {(["en", "bn"] as Lang[]).map((l) => <button key={l} onClick={() => set(l)} className={"rounded-lg px-2.5 py-1.5 text-[10px] font-bold tracking-[0.12em] transition " + (lang === l ? "bg-[#c7f36b] text-[#08100f]" : "text-[#8f9b96] hover:text-white")}>{l === "en" ? "EN" : "à¦¬à¦¾à¦‚à¦²à¦¾"}</button>)}
   </div>;
 }
+

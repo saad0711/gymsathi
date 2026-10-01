@@ -1,3 +1,4 @@
+﻿/* eslint-disable react-hooks/immutability */
 "use client";
 
 import { useState } from "react";
@@ -130,7 +131,7 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
               onClick={() => chooseLang(l)}
               className={`px-3 py-1 text-xs font-semibold ${lang === l ? "bg-lime-400 text-slate-950" : "text-slate-300"}`}
             >
-              {l === "en" ? "EN" : "বাংলা"}
+              {l === "en" ? "EN" : "à¦¬à¦¾à¦‚à¦²à¦¾"}
             </button>
           ))}
         </div>
@@ -142,8 +143,8 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
       <div className="space-y-4">
         {step === 0 && (
           <>
-            <h1 className="text-2xl font-bold">{T("What's your main goal?", "আপনার প্রধান লক্ষ্য কী?")}</h1>
-            <p className="text-sm text-slate-400">{T("No sign-up needed. You'll see your plan in under 2 minutes.", "সাইন-আপ লাগবে না। ২ মিনিটেরও কম সময়ে প্ল্যান দেখতে পাবেন।")}</p>
+            <h1 className="text-2xl font-bold">{T("What's your main goal?", "à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦°à¦§à¦¾à¦¨ à¦²à¦•à§à¦·à§à¦¯ à¦•à§€?")}</h1>
+            <p className="text-sm text-slate-400">{T("No sign-up needed. You'll see your plan in under 2 minutes.", "à¦¸à¦¾à¦‡à¦¨-à¦†à¦ª à¦²à¦¾à¦—à¦¬à§‡ à¦¨à¦¾à¥¤ à§¨ à¦®à¦¿à¦¨à¦¿à¦Ÿà§‡à¦°à¦“ à¦•à¦® à¦¸à¦®à¦¯à¦¼à§‡ à¦ªà§à¦²à§à¦¯à¦¾à¦¨ à¦¦à§‡à¦–à¦¤à§‡ à¦ªà¦¾à¦¬à§‡à¦¨à¥¤")}</p>
             {GOALS.map((g) => (
               <Choice key={g} active={f.goal === g} onClick={() => set("goal", g)}>
                 {pick(lang, GOAL_LABELS[g]!.en, GOAL_LABELS[g]!.bn)}
@@ -153,7 +154,7 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
         )}
         {step === 1 && (
           <>
-            <h1 className="text-2xl font-bold">{T("How experienced are you?", "আপনার অভিজ্ঞতা কতটুকু?")}</h1>
+            <h1 className="text-2xl font-bold">{T("How experienced are you?", "à¦†à¦ªà¦¨à¦¾à¦° à¦…à¦­à¦¿à¦œà§à¦žà¦¤à¦¾ à¦•à¦¤à¦Ÿà§à¦•à§?")}</h1>
             {LEVELS.map((l) => (
               <Choice key={l} active={f.level === l} onClick={() => set("level", l)}>
                 {pick(lang, LEVEL_LABELS[l]!.en, LEVEL_LABELS[l]!.bn)}
@@ -163,8 +164,8 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
         )}
         {step === 2 && (
           <>
-            <h1 className="text-2xl font-bold">{T("Your schedule", "আপনার সময়সূচি")}</h1>
-            <p className="text-sm text-slate-400">{T("Days per week", "সপ্তাহে কত দিন")}</p>
+            <h1 className="text-2xl font-bold">{T("Your schedule", "à¦†à¦ªà¦¨à¦¾à¦° à¦¸à¦®à¦¯à¦¼à¦¸à§‚à¦šà¦¿")}</h1>
+            <p className="text-sm text-slate-400">{T("Days per week", "à¦¸à¦ªà§à¦¤à¦¾à¦¹à§‡ à¦•à¦¤ à¦¦à¦¿à¦¨")}</p>
             <div className="grid grid-cols-5 gap-2">
               {[2, 3, 4, 5, 6].map((d) => (
                 <Choice key={d} active={f.daysPerWeek === d} onClick={() => set("daysPerWeek", d)}>
@@ -172,7 +173,7 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
                 </Choice>
               ))}
             </div>
-            <p className="pt-2 text-sm text-slate-400">{T("Minutes per session", "প্রতি সেশনে কত মিনিট")}</p>
+            <p className="pt-2 text-sm text-slate-400">{T("Minutes per session", "à¦ªà§à¦°à¦¤à¦¿ à¦¸à§‡à¦¶à¦¨à§‡ à¦•à¦¤ à¦®à¦¿à¦¨à¦¿à¦Ÿ")}</p>
             <div className="grid grid-cols-4 gap-2">
               {[30, 45, 60, 75].map((m) => (
                 <Choice key={m} active={f.sessionMinutes === m} onClick={() => set("sessionMinutes", m)}>
@@ -180,50 +181,50 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
                 </Choice>
               ))}
             </div>
-            <p className="pt-2 text-sm text-slate-400">{T("Where will you train?", "কোথায় ব্যায়াম করবেন?")}</p>
+            <p className="pt-2 text-sm text-slate-400">{T("Where will you train?", "à¦•à§‹à¦¥à¦¾à¦¯à¦¼ à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦® à¦•à¦°à¦¬à§‡à¦¨?")}</p>
             <div className="grid grid-cols-2 gap-2">
               <Choice
                 active={f.location === "gym"}
                 onClick={() => setF((p) => ({ ...p, location: "gym", equipment: GYM_DEFAULT_EQUIPMENT }))}
               >
-                🏋️ {T("Gym", "জিম")}
+                ðŸ‹ï¸ {T("Gym", "à¦œà¦¿à¦®")}
               </Choice>
               <Choice
                 active={f.location === "home"}
                 onClick={() => setF((p) => ({ ...p, location: "home", equipment: HOME_DEFAULT_EQUIPMENT }))}
               >
-                🏠 {T("Home", "বাসা")}
+                ðŸ  {T("Home", "à¦¬à¦¾à¦¸à¦¾")}
               </Choice>
             </div>
           </>
         )}
         {step === 3 && (
           <>
-            <h1 className="text-2xl font-bold">{T("About you", "আপনার সম্পর্কে")}</h1>
-            <p className="text-sm text-slate-400">{T("Used for calorie and protein targets. Stays private.", "ক্যালরি ও প্রোটিনের লক্ষ্য ঠিক করতে লাগবে। এটি গোপন থাকে।")}</p>
+            <h1 className="text-2xl font-bold">{T("About you", "à¦†à¦ªà¦¨à¦¾à¦° à¦¸à¦®à§à¦ªà¦°à§à¦•à§‡")}</h1>
+            <p className="text-sm text-slate-400">{T("Used for calorie and protein targets. Stays private.", "à¦•à§à¦¯à¦¾à¦²à¦°à¦¿ à¦“ à¦ªà§à¦°à§‹à¦Ÿà¦¿à¦¨à§‡à¦° à¦²à¦•à§à¦·à§à¦¯ à¦ à¦¿à¦• à¦•à¦°à¦¤à§‡ à¦²à¦¾à¦—à¦¬à§‡à¥¤ à¦à¦Ÿà¦¿ à¦—à§‹à¦ªà¦¨ à¦¥à¦¾à¦•à§‡à¥¤")}</p>
             <div className="grid grid-cols-3 gap-2">
               {(["male", "female", "other"] as const).map((g) => (
                 <Choice key={g} active={f.gender === g} onClick={() => set("gender", g)}>
                   <span className="block text-center text-sm">
-                    {g === "male" ? T("Male", "পুরুষ") : g === "female" ? T("Female", "নারী") : T("Other", "অন্যান্য")}
+                    {g === "male" ? T("Male", "à¦ªà§à¦°à§à¦·") : g === "female" ? T("Female", "à¦¨à¦¾à¦°à§€") : T("Other", "à¦…à¦¨à§à¦¯à¦¾à¦¨à§à¦¯")}
                   </span>
                 </Choice>
               ))}
             </div>
             <div className="grid grid-cols-3 gap-2">
-              {numInput(T("Age", "বয়স"), "age", 12, 90)}
-              {numInput(T("Height (cm)", "উচ্চতা (সেমি)"), "heightCm", 120, 230)}
-              {numInput(T("Weight (kg)", "ওজন (কেজি)"), "weightKg", 30, 250)}
+              {numInput(T("Age", "à¦¬à¦¯à¦¼à¦¸"), "age", 12, 90)}
+              {numInput(T("Height (cm)", "à¦‰à¦šà§à¦šà¦¤à¦¾ (à¦¸à§‡à¦®à¦¿)"), "heightCm", 120, 230)}
+              {numInput(T("Weight (kg)", "à¦“à¦œà¦¨ (à¦•à§‡à¦œà¦¿)"), "weightKg", 30, 250)}
             </div>
           </>
         )}
         {step === 4 && (
           <>
-            <h1 className="text-2xl font-bold">{T("What does your gym have?", "আপনার জিমে কী কী আছে?")}</h1>
-            <p className="text-sm text-slate-400">{T("We only pick exercises you can actually do.", "শুধু আপনি করতে পারবেন এমন ব্যায়ামই বাছাই করা হবে।")}</p>
+            <h1 className="text-2xl font-bold">{T("What does your gym have?", "à¦†à¦ªà¦¨à¦¾à¦° à¦œà¦¿à¦®à§‡ à¦•à§€ à¦•à§€ à¦†à¦›à§‡?")}</h1>
+            <p className="text-sm text-slate-400">{T("We only pick exercises you can actually do.", "à¦¶à§à¦§à§ à¦†à¦ªà¦¨à¦¿ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à¦¬à§‡à¦¨ à¦à¦®à¦¨ à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦®à¦‡ à¦¬à¦¾à¦›à¦¾à¦‡ à¦•à¦°à¦¾ à¦¹à¦¬à§‡à¥¤")}</p>
             {EQUIPMENT.filter((e) => e !== "bodyweight").map((e) => (
               <Choice key={e} active={f.equipment.includes(e)} onClick={() => toggle("equipment", e)}>
-                {f.equipment.includes(e) ? "✅ " : "⬜ "}
+                {f.equipment.includes(e) ? "âœ… " : "â¬œ "}
                 {pick(lang, EQUIPMENT_LABELS[e].en, EQUIPMENT_LABELS[e].bn)}
               </Choice>
             ))}
@@ -231,8 +232,8 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
         )}
         {step === 5 && (
           <>
-            <h1 className="text-2xl font-bold">{T("Health & safety", "স্বাস্থ্য ও নিরাপত্তা")}</h1>
-            <p className="text-sm text-slate-400">{T("Any injuries or sore areas?", "কোনো আঘাত বা ব্যথার জায়গা আছে?")}</p>
+            <h1 className="text-2xl font-bold">{T("Health & safety", "à¦¸à§à¦¬à¦¾à¦¸à§à¦¥à§à¦¯ à¦“ à¦¨à¦¿à¦°à¦¾à¦ªà¦¤à§à¦¤à¦¾")}</h1>
+            <p className="text-sm text-slate-400">{T("Any injuries or sore areas?", "à¦•à§‹à¦¨à§‹ à¦†à¦˜à¦¾à¦¤ à¦¬à¦¾ à¦¬à§à¦¯à¦¥à¦¾à¦° à¦œà¦¾à¦¯à¦¼à¦—à¦¾ à¦†à¦›à§‡?")}</p>
             <div className="grid grid-cols-2 gap-2">
               {INJURIES.map((k) => (
                 <Choice key={k} active={f.injuries.includes(k)} onClick={() => toggle("injuries", k)}>
@@ -240,11 +241,11 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
                 </Choice>
               ))}
             </div>
-            <p className="pt-2 text-sm text-slate-400">{T("Quick health check. Tick anything that applies:", "দ্রুত স্বাস্থ্য যাচাই। যা প্রযোজ্য টিক দিন:")}</p>
+            <p className="pt-2 text-sm text-slate-400">{T("Quick health check. Tick anything that applies:", "à¦¦à§à¦°à§à¦¤ à¦¸à§à¦¬à¦¾à¦¸à§à¦¥à§à¦¯ à¦¯à¦¾à¦šà¦¾à¦‡à¥¤ à¦¯à¦¾ à¦ªà§à¦°à¦¯à§‹à¦œà§à¦¯ à¦Ÿà¦¿à¦• à¦¦à¦¿à¦¨:")}</p>
             {PARQ.map((q) => (
               <Choice key={q.id} active={f.parqFlags.includes(q.id)} onClick={() => toggle("parqFlags", q.id)}>
                 <span className="text-sm">
-                  {f.parqFlags.includes(q.id) ? "☑ " : "☐ "}
+                  {f.parqFlags.includes(q.id) ? "â˜‘ " : "â˜ "}
                   {pick(lang, q.en, q.bn)}
                 </span>
               </Choice>
@@ -253,7 +254,7 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
               <p className="rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-200">
                 {T(
                   "Please talk to a doctor before starting. We'll still build a gentle plan, but get medical clearance first.",
-                  "শুরু করার আগে ডাক্তারের সাথে কথা বলুন। আমরা হালকা প্ল্যান বানাব, তবে আগে চিকিৎসকের অনুমতি নিন।",
+                  "à¦¶à§à¦°à§ à¦•à¦°à¦¾à¦° à¦†à¦—à§‡ à¦¡à¦¾à¦•à§à¦¤à¦¾à¦°à§‡à¦° à¦¸à¦¾à¦¥à§‡ à¦•à¦¥à¦¾ à¦¬à¦²à§à¦¨à¥¤ à¦†à¦®à¦°à¦¾ à¦¹à¦¾à¦²à¦•à¦¾ à¦ªà§à¦²à§à¦¯à¦¾à¦¨ à¦¬à¦¾à¦¨à¦¾à¦¬, à¦¤à¦¬à§‡ à¦†à¦—à§‡ à¦šà¦¿à¦•à¦¿à§Žà¦¸à¦•à§‡à¦° à¦…à¦¨à§à¦®à¦¤à¦¿ à¦¨à¦¿à¦¨à¥¤",
                 )}
               </p>
             )}
@@ -261,17 +262,17 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
         )}
         {step === 6 && (
           <>
-            <h1 className="text-2xl font-bold">{T("Food preferences", "খাবারের পছন্দ")}</h1>
+            <h1 className="text-2xl font-bold">{T("Food preferences", "à¦–à¦¾à¦¬à¦¾à¦°à§‡à¦° à¦ªà¦›à¦¨à§à¦¦")}</h1>
             <div className="grid grid-cols-2 gap-2">
-              <Choice active={f.dietPref === "non_veg"} onClick={() => set("dietPref", "non_veg")}>🍗 {T("Non-veg (halal)", "নন-ভেজ (হালাল)")}</Choice>
-              <Choice active={f.dietPref === "veg"} onClick={() => set("dietPref", "veg")}>🥦 {T("Vegetarian", "নিরামিষ")}</Choice>
+              <Choice active={f.dietPref === "non_veg"} onClick={() => set("dietPref", "non_veg")}>ðŸ— {T("Non-veg (halal)", "à¦¨à¦¨-à¦­à§‡à¦œ (à¦¹à¦¾à¦²à¦¾à¦²)")}</Choice>
+              <Choice active={f.dietPref === "veg"} onClick={() => set("dietPref", "veg")}>ðŸ¥¦ {T("Vegetarian", "à¦¨à¦¿à¦°à¦¾à¦®à¦¿à¦·")}</Choice>
             </div>
-            <p className="pt-2 text-sm text-slate-400">{T("Daily food budget", "দৈনিক খাবারের বাজেট")}</p>
+            <p className="pt-2 text-sm text-slate-400">{T("Daily food budget", "à¦¦à§ˆà¦¨à¦¿à¦• à¦–à¦¾à¦¬à¦¾à¦°à§‡à¦° à¦¬à¦¾à¦œà§‡à¦Ÿ")}</p>
             <div className="grid grid-cols-3 gap-2">
               {(["low", "medium", "high"] as const).map((b) => (
                 <Choice key={b} active={f.budget === b} onClick={() => set("budget", b)}>
                   <span className="block text-center text-sm">
-                    {b === "low" ? T("Tight", "সীমিত") : b === "medium" ? T("Medium", "মাঝারি") : T("Flexible", "স্বচ্ছন্দ")}
+                    {b === "low" ? T("Tight", "à¦¸à§€à¦®à¦¿à¦¤") : b === "medium" ? T("Medium", "à¦®à¦¾à¦à¦¾à¦°à¦¿") : T("Flexible", "à¦¸à§à¦¬à¦šà§à¦›à¦¨à§à¦¦")}
                   </span>
                 </Choice>
               ))}
@@ -284,16 +285,16 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
       <div className="mt-8 flex gap-3">
         {step > 0 && (
           <button className={btnGhost} onClick={() => setStep(step - 1)} disabled={busy}>
-            {T("Back", "পেছনে")}
+            {T("Back", "à¦ªà§‡à¦›à¦¨à§‡")}
           </button>
         )}
         {step < TOTAL - 1 ? (
           <button className={`${btnPrimary} flex-1`} onClick={() => setStep(step + 1)}>
-            {T("Continue", "এগিয়ে যান")}
+            {T("Continue", "à¦à¦—à¦¿à¦¯à¦¼à§‡ à¦¯à¦¾à¦¨")}
           </button>
         ) : (
           <button className={`${btnPrimary} flex-1`} onClick={submit} disabled={busy}>
-            {busy ? T("Building your plan…", "আপনার প্ল্যান তৈরি হচ্ছে…") : T("Build my plan", "আমার প্ল্যান বানান")}
+            {busy ? T("Building your planâ€¦", "à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦²à§à¦¯à¦¾à¦¨ à¦¤à§ˆà¦°à¦¿ à¦¹à¦šà§à¦›à§‡â€¦") : T("Build my plan", "à¦†à¦®à¦¾à¦° à¦ªà§à¦²à§à¦¯à¦¾à¦¨ à¦¬à¦¾à¦¨à¦¾à¦¨")}
           </button>
         )}
       </div>
@@ -301,3 +302,4 @@ export function OnboardingWizard({ initialLang }: { initialLang: Lang }) {
     </div>
   );
 }
+

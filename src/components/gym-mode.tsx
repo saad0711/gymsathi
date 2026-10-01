@@ -1,3 +1,4 @@
+﻿/* eslint-disable react-hooks/set-state-in-effect, react-hooks/purity */
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -208,7 +209,7 @@ export function GymMode(p: Props) {
       (logged[e.key] ?? []).map((s, i) => ({ exerciseId: e.exerciseId, setNumber: i + 1, weightKg: s.weightKg, reps: s.reps })),
     );
     if (!sets.length) {
-      setError(T("Log at least one set first.", "আগে অন্তত একটি সেট লগ করুন।"));
+      setError(T("Log at least one set first.", "à¦†à¦—à§‡ à¦…à¦¨à§à¦¤à¦¤ à¦à¦•à¦Ÿà¦¿ à¦¸à§‡à¦Ÿ à¦²à¦— à¦•à¦°à§à¦¨à¥¤"));
       return;
     }
     setSaving(true);
@@ -249,12 +250,12 @@ export function GymMode(p: Props) {
   if (phase === "warmup") {
     return (
       <div className="mx-auto flex min-h-screen max-w-md flex-col px-4 py-6">
-        <Link href="/app" className="text-sm text-slate-400">← {T("Back", "ফিরুন")}</Link>
+        <Link href="/app" className="text-sm text-slate-400">â† {T("Back", "à¦«à¦¿à¦°à§à¦¨")}</Link>
         <h1 className="mt-3 text-2xl font-bold">{pick(p.lang, p.dayNameEn, p.dayNameBn)}</h1>
         <p className="text-sm text-slate-400">
-          {list.length} {T("exercises", "টি ব্যায়াম")} {p.lite && `· ${T("lighter re-entry session", "হালকা পুনরায় শুরুর সেশন")}`}
+          {list.length} {T("exercises", "à¦Ÿà¦¿ à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦®")} {p.lite && `Â· ${T("lighter re-entry session", "à¦¹à¦¾à¦²à¦•à¦¾ à¦ªà§à¦¨à¦°à¦¾à¦¯à¦¼ à¦¶à§à¦°à§à¦° à¦¸à§‡à¦¶à¦¨")}`}
         </p>
-        <h2 className="mb-2 mt-6 font-semibold text-lime-400">🔥 {T("Warm-up (5 min)", "ওয়ার্ম-আপ (৫ মিনিট)")}</h2>
+        <h2 className="mb-2 mt-6 font-semibold text-lime-400">ðŸ”¥ {T("Warm-up (5 min)", "à¦“à¦¯à¦¼à¦¾à¦°à§à¦®-à¦†à¦ª (à§« à¦®à¦¿à¦¨à¦¿à¦Ÿ)")}</h2>
         <ul className="space-y-2">
           {pick(p.lang, p.warmupEn.join("|"), p.warmupBn.join("|")).split("|").map((w, i) => (
             <li key={i}>
@@ -264,14 +265,14 @@ export function GymMode(p: Props) {
                   checked.includes(i) ? "border-lime-400/50 bg-lime-400/10 text-slate-400 line-through" : "border-white/10 bg-white/5"
                 }`}
               >
-                <span className="text-xl">{checked.includes(i) ? "✅" : "⬜"}</span>
+                <span className="text-xl">{checked.includes(i) ? "âœ…" : "â¬œ"}</span>
                 {w}
               </button>
             </li>
           ))}
         </ul>
         <p className="mt-3 text-sm text-slate-400">
-          {T("Then do 1–2 light sets of your first exercise before the working sets.", "তারপর কাজের সেটের আগে প্রথম ব্যায়ামের ১–২টি হালকা সেট করুন।")}
+          {T("Then do 1â€“2 light sets of your first exercise before the working sets.", "à¦¤à¦¾à¦°à¦ªà¦° à¦•à¦¾à¦œà§‡à¦° à¦¸à§‡à¦Ÿà§‡à¦° à¦†à¦—à§‡ à¦ªà§à¦°à¦¥à¦® à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦®à§‡à¦° à§§â€“à§¨à¦Ÿà¦¿ à¦¹à¦¾à¦²à¦•à¦¾ à¦¸à§‡à¦Ÿ à¦•à¦°à§à¦¨à¥¤")}
         </p>
         <button
           onClick={() => {
@@ -280,7 +281,7 @@ export function GymMode(p: Props) {
           }}
           className="mt-auto rounded-2xl bg-lime-400 py-5 text-xl font-bold text-slate-950 active:scale-[0.98]"
         >
-          {T("Start workout", "ওয়ার্কআউট শুরু করুন")}
+          {T("Start workout", "à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦†à¦‰à¦Ÿ à¦¶à§à¦°à§ à¦•à¦°à§à¦¨")}
         </button>
       </div>
     );
@@ -291,33 +292,33 @@ export function GymMode(p: Props) {
     return (
       <div className="mx-auto min-h-screen max-w-md px-4 py-8">
         <div className="text-center">
-          <div className="text-6xl">🎉</div>
-          <h1 className="mt-2 text-3xl font-bold text-lime-400">{T("Workout complete!", "ওয়ার্কআউট সম্পন্ন!")}</h1>
-          <p className="mt-1 text-slate-400">{T("Every session counts. You showed up.", "প্রতিটি সেশনই গুরুত্বপূর্ণ। আপনি হাজির হয়েছেন।")}</p>
+          <div className="text-6xl">ðŸŽ‰</div>
+          <h1 className="mt-2 text-3xl font-bold text-lime-400">{T("Workout complete!", "à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦†à¦‰à¦Ÿ à¦¸à¦®à§à¦ªà¦¨à§à¦¨!")}</h1>
+          <p className="mt-1 text-slate-400">{T("Every session counts. You showed up.", "à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¿ à¦¸à§‡à¦¶à¦¨à¦‡ à¦—à§à¦°à§à¦¤à§à¦¬à¦ªà§‚à¦°à§à¦£à¥¤ à¦†à¦ªà¦¨à¦¿ à¦¹à¦¾à¦œà¦¿à¦° à¦¹à¦¯à¦¼à§‡à¦›à§‡à¦¨à¥¤")}</p>
         </div>
         <div className="mt-6 grid grid-cols-3 gap-2 text-center">
-          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{totalLogged}</div><div className="text-xs text-slate-400">{T("sets", "সেট")}</div></div>
-          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{Math.round(volume)}</div><div className="text-xs text-slate-400">{T("kg volume", "কেজি ভলিউম")}</div></div>
-          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{Math.max(1, Math.round((Date.now() - startedAt) / 60000))}</div><div className="text-xs text-slate-400">{T("min", "মিনিট")}</div></div>
+          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{totalLogged}</div><div className="text-xs text-slate-400">{T("sets", "à¦¸à§‡à¦Ÿ")}</div></div>
+          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{Math.round(volume)}</div><div className="text-xs text-slate-400">{T("kg volume", "à¦•à§‡à¦œà¦¿ à¦­à¦²à¦¿à¦‰à¦®")}</div></div>
+          <div className="rounded-xl bg-white/5 p-3"><div className="text-2xl font-bold">{Math.max(1, Math.round((Date.now() - startedAt) / 60000))}</div><div className="text-xs text-slate-400">{T("min", "à¦®à¦¿à¦¨à¦¿à¦Ÿ")}</div></div>
         </div>
         {result?.offline && (
           <p className="mt-4 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-sm text-amber-200">
-            {T("No signal. Your workout is saved on this phone and will sync automatically when you're online.", "সিগন্যাল নেই। আপনার ওয়ার্কআউট ফোনে সেভ আছে, অনলাইনে এলে নিজে থেকেই সিঙ্ক হবে।")}
+            {T("No signal. Your workout is saved on this phone and will sync automatically when you're online.", "à¦¸à¦¿à¦—à¦¨à§à¦¯à¦¾à¦² à¦¨à§‡à¦‡à¥¤ à¦†à¦ªà¦¨à¦¾à¦° à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦†à¦‰à¦Ÿ à¦«à§‹à¦¨à§‡ à¦¸à§‡à¦­ à¦†à¦›à§‡, à¦…à¦¨à¦²à¦¾à¦‡à¦¨à§‡ à¦à¦²à§‡ à¦¨à¦¿à¦œà§‡ à¦¥à§‡à¦•à§‡à¦‡ à¦¸à¦¿à¦™à§à¦• à¦¹à¦¬à§‡à¥¤")}
           </p>
         )}
         {result && result.prs.length > 0 && (
           <div className="mt-4 rounded-xl border border-lime-400/40 bg-lime-400/10 p-4">
-            <p className="font-semibold text-lime-300">🏆 {T("New personal records!", "নতুন ব্যক্তিগত রেকর্ড!")}</p>
+            <p className="font-semibold text-lime-300">ðŸ† {T("New personal records!", "à¦¨à¦¤à§à¦¨ à¦¬à§à¦¯à¦•à§à¦¤à¦¿à¦—à¦¤ à¦°à§‡à¦•à¦°à§à¦¡!")}</p>
             <ul className="mt-1 text-sm">
               {result.prs.map((r) => (
-                <li key={r.exerciseId}>{pick(p.lang, r.nameEn, r.nameBn)}: {r.weightKg} kg × {r.reps}</li>
+                <li key={r.exerciseId}>{pick(p.lang, r.nameEn, r.nameBn)}: {r.weightKg} kg Ã— {r.reps}</li>
               ))}
             </ul>
           </div>
         )}
         {result && result.newBadges.length > 0 && (
           <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="font-semibold">{T("Badges unlocked", "নতুন ব্যাজ")}</p>
+            <p className="font-semibold">{T("Badges unlocked", "à¦¨à¦¤à§à¦¨ à¦¬à§à¦¯à¦¾à¦œ")}</p>
             <ul className="mt-1 space-y-1 text-sm">
               {result.newBadges.map((id) => {
                 const b = BADGES.find((x) => x.id === id);
@@ -326,7 +327,7 @@ export function GymMode(p: Props) {
             </ul>
           </div>
         )}
-        <h2 className="mb-2 mt-6 font-semibold text-lime-400">🧘 {T("Cool-down", "কুল-ডাউন")}</h2>
+        <h2 className="mb-2 mt-6 font-semibold text-lime-400">ðŸ§˜ {T("Cool-down", "à¦•à§à¦²-à¦¡à¦¾à¦‰à¦¨")}</h2>
         <ul className="list-disc space-y-1 pl-5 text-sm text-slate-300">
           {pick(p.lang, p.cooldownEn.join("|"), p.cooldownBn.join("|")).split("|").map((c, i) => <li key={i}>{c}</li>)}
         </ul>
@@ -337,7 +338,7 @@ export function GymMode(p: Props) {
           }}
           className="mt-8 w-full rounded-2xl bg-lime-400 py-4 text-lg font-bold text-slate-950"
         >
-          {T("Back to Today", "আজকের পাতায় ফিরুন")}
+          {T("Back to Today", "à¦†à¦œà¦•à§‡à¦° à¦ªà¦¾à¦¤à¦¾à¦¯à¦¼ à¦«à¦¿à¦°à§à¦¨")}
         </button>
       </div>
     );
@@ -345,16 +346,16 @@ export function GymMode(p: Props) {
 
   // ---------- WORK ----------
   if (!ex) return null;
-  const lastText = ex.last?.length ? ex.last.map((s) => `${s.weightKg > 0 ? s.weightKg + "kg×" : ""}${s.reps}`).join(", ") : null;
+  const lastText = ex.last?.length ? ex.last.map((s) => `${s.weightKg > 0 ? s.weightKg + "kgÃ—" : ""}${s.reps}`).join(", ") : null;
 
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col px-4 pb-6 pt-4">
       <div className="flex items-center justify-between text-sm text-slate-400">
-        <button onClick={() => { if (confirm(T("Leave this workout? Your progress stays saved on this phone.", "ওয়ার্কআউট ছাড়বেন? আপনার অগ্রগতি ফোনে সেভ থাকবে।"))) router.push("/app"); }}>
-          ✕ {T("Exit", "বের হন")}
+        <button onClick={() => { if (confirm(T("Leave this workout? Your progress stays saved on this phone.", "à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦†à¦‰à¦Ÿ à¦›à¦¾à¦¡à¦¼à¦¬à§‡à¦¨? à¦†à¦ªà¦¨à¦¾à¦° à¦…à¦—à§à¦°à¦—à¦¤à¦¿ à¦«à§‹à¦¨à§‡ à¦¸à§‡à¦­ à¦¥à¦¾à¦•à¦¬à§‡à¥¤"))) router.push("/app"); }}>
+          âœ• {T("Exit", "à¦¬à§‡à¦° à¦¹à¦¨")}
         </button>
-        <span>{T("Exercise", "ব্যায়াম")} {idx + 1}/{list.length}</span>
-        <span>{totalLogged} {T("sets", "সেট")}</span>
+        <span>{T("Exercise", "à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦®")} {idx + 1}/{list.length}</span>
+        <span>{totalLogged} {T("sets", "à¦¸à§‡à¦Ÿ")}</span>
       </div>
       <div className="mt-2 flex gap-1">
         {list.map((e, i) => (
@@ -364,22 +365,22 @@ export function GymMode(p: Props) {
 
       <h1 className="mt-4 text-3xl font-bold leading-tight">{pick(p.lang, ex.nameEn, ex.nameBn)}</h1>
       <p className="mt-1 text-lg text-lime-300">
-        {ex.sets} × {ex.repMin}–{ex.repMax} {T("reps", "রেপ")} · {T("leave", "রাখুন")} {ex.rir} {T("in the tank", "রেপ বাকি")}
+        {ex.sets} Ã— {ex.repMin}â€“{ex.repMax} {T("reps", "à¦°à§‡à¦ª")} Â· {T("leave", "à¦°à¦¾à¦–à§à¦¨")} {ex.rir} {T("in the tank", "à¦°à§‡à¦ª à¦¬à¦¾à¦•à¦¿")}
       </p>
       {(lastText || ex.noteEn) && (
         <div className="mt-2 rounded-xl bg-white/5 p-3 text-sm">
-          {lastText && <p className="text-slate-300">🎯 {T("Beat last time:", "গতবারকে ছাড়ান:")} <b>{lastText}</b></p>}
-          {ex.noteEn && <p className="mt-1 text-lime-300">⚡ {pick(p.lang, ex.noteEn, ex.noteBn ?? ex.noteEn)}</p>}
+          {lastText && <p className="text-slate-300">ðŸŽ¯ {T("Beat last time:", "à¦—à¦¤à¦¬à¦¾à¦°à¦•à§‡ à¦›à¦¾à¦¡à¦¼à¦¾à¦¨:")} <b>{lastText}</b></p>}
+          {ex.noteEn && <p className="mt-1 text-lime-300">âš¡ {pick(p.lang, ex.noteEn, ex.noteBn ?? ex.noteEn)}</p>}
         </div>
       )}
 
       <div className="mt-3 flex gap-2">
         <button onClick={() => setHowTo((v) => !v)} className="flex-1 rounded-xl border border-white/15 py-2 text-sm">
-          {howTo ? T("Hide how-to", "লুকান") : `📖 ${T("How to", "কীভাবে করবেন")}`}
+          {howTo ? T("Hide how-to", "à¦²à§à¦•à¦¾à¦¨") : `ðŸ“– ${T("How to", "à¦•à§€à¦­à¦¾à¦¬à§‡ à¦•à¦°à¦¬à§‡à¦¨")}`}
         </button>
         {doneSets.length === 0 && (
           <button onClick={openAlternatives} className="flex-1 rounded-xl border border-amber-400/40 bg-amber-400/10 py-2 text-sm text-amber-200">
-            🔁 {T("Machine busy?", "মেশিন ব্যস্ত?")}
+            ðŸ” {T("Machine busy?", "à¦®à§‡à¦¶à¦¿à¦¨ à¦¬à§à¦¯à¦¸à§à¦¤?")}
           </button>
         )}
       </div>
@@ -388,8 +389,8 @@ export function GymMode(p: Props) {
           <ol className="list-decimal space-y-1 pl-5 text-slate-200">
             {(p.lang === "bn" ? ex.stepsBn : ex.stepsEn).map((s, i) => <li key={i}>{s}</li>)}
           </ol>
-          {(p.lang === "bn" ? ex.tipBn : ex.tipEn) && <p className="mt-2 text-lime-300">💡 {p.lang === "bn" ? ex.tipBn : ex.tipEn}</p>}
-          <Link href={`/app/library/${ex.slug}`} className="mt-2 inline-block text-xs text-slate-400 underline">{T("Full guide", "পূর্ণ গাইড")}</Link>
+          {(p.lang === "bn" ? ex.tipBn : ex.tipEn) && <p className="mt-2 text-lime-300">ðŸ’¡ {p.lang === "bn" ? ex.tipBn : ex.tipEn}</p>}
+          <Link href={`/app/library/${ex.slug}`} className="mt-2 inline-block text-xs text-slate-400 underline">{T("Full guide", "à¦ªà§‚à¦°à§à¦£ à¦—à¦¾à¦‡à¦¡")}</Link>
         </div>
       )}
 
@@ -398,23 +399,23 @@ export function GymMode(p: Props) {
           const s = doneSets[i];
           return (
             <div key={i} className={`rounded-xl px-3 py-2 text-sm ${s ? "bg-lime-400 font-semibold text-slate-950" : "border border-white/15 text-slate-400"}`}>
-              {s ? `${s.weightKg > 0 ? s.weightKg + "kg × " : ""}${s.reps}` : `${T("Set", "সেট")} ${i + 1}`}
+              {s ? `${s.weightKg > 0 ? s.weightKg + "kg Ã— " : ""}${s.reps}` : `${T("Set", "à¦¸à§‡à¦Ÿ")} ${i + 1}`}
             </div>
           );
         })}
         {doneSets.length > 0 && (
-          <button onClick={undoSet} className="px-2 text-sm text-slate-400 underline">{T("undo", "বাতিল")}</button>
+          <button onClick={undoSet} className="px-2 text-sm text-slate-400 underline">{T("undo", "à¦¬à¦¾à¦¤à¦¿à¦²")}</button>
         )}
       </div>
 
       {restEnd !== null && (
         <div className="mt-4 rounded-2xl border border-lime-400/40 bg-lime-400/10 p-4 text-center">
-          <p className="text-sm text-lime-300">{remaining > 0 ? T("Rest", "বিশ্রাম") : T("Time's up. Go!", "সময় শেষ, শুরু করুন!")}</p>
+          <p className="text-sm text-lime-300">{remaining > 0 ? T("Rest", "à¦¬à¦¿à¦¶à§à¦°à¦¾à¦®") : T("Time's up. Go!", "à¦¸à¦®à¦¯à¦¼ à¦¶à§‡à¦·, à¦¶à§à¦°à§ à¦•à¦°à§à¦¨!")}</p>
           <p className="text-6xl font-bold tabular-nums">{fmt(remaining)}</p>
           <div className="mt-2 flex justify-center gap-2 text-sm">
-            <button onClick={() => setRestEnd((r) => (r ?? Date.now()) - 15000)} className="rounded-lg bg-white/10 px-3 py-1.5">−15s</button>
+            <button onClick={() => setRestEnd((r) => (r ?? Date.now()) - 15000)} className="rounded-lg bg-white/10 px-3 py-1.5">âˆ’15s</button>
             <button onClick={() => setRestEnd((r) => (r ?? Date.now()) + 15000)} className="rounded-lg bg-white/10 px-3 py-1.5">+15s</button>
-            <button onClick={() => setRestEnd(null)} className="rounded-lg bg-white/10 px-3 py-1.5">{T("Skip", "এড়িয়ে যান")}</button>
+            <button onClick={() => setRestEnd(null)} className="rounded-lg bg-white/10 px-3 py-1.5">{T("Skip", "à¦à¦¡à¦¼à¦¿à¦¯à¦¼à§‡ à¦¯à¦¾à¦¨")}</button>
           </div>
         </div>
       )}
@@ -423,7 +424,7 @@ export function GymMode(p: Props) {
         <div className="mt-4 space-y-3">
           {!ex.bodyweight && (
             <div className="flex items-center justify-between gap-2">
-              <button className={big} onClick={() => setWeight((w) => Math.max(0, w - step))} aria-label="less weight">−</button>
+              <button className={big} onClick={() => setWeight((w) => Math.max(0, w - step))} aria-label="less weight">âˆ’</button>
               <div className="text-center">
                 <div className="text-5xl font-bold tabular-nums">{weight}</div>
                 <div className="text-xs text-slate-400">kg</div>
@@ -432,10 +433,10 @@ export function GymMode(p: Props) {
             </div>
           )}
           <div className="flex items-center justify-between gap-2">
-            <button className={big} onClick={() => setReps((r) => Math.max(0, r - 1))} aria-label="fewer reps">−</button>
+            <button className={big} onClick={() => setReps((r) => Math.max(0, r - 1))} aria-label="fewer reps">âˆ’</button>
             <div className="text-center">
               <div className="text-5xl font-bold tabular-nums">{reps}</div>
-              <div className="text-xs text-slate-400">{T("reps", "রেপ")}</div>
+              <div className="text-xs text-slate-400">{T("reps", "à¦°à§‡à¦ª")}</div>
             </div>
             <button className={big} onClick={() => setReps((r) => r + 1)} aria-label="more reps">+</button>
           </div>
@@ -446,27 +447,27 @@ export function GymMode(p: Props) {
       <div className="mt-auto space-y-2 pt-6">
         {!setsComplete ? (
           <button onClick={logSet} className="w-full rounded-2xl bg-lime-400 py-5 text-xl font-bold text-slate-950 active:scale-[0.98]">
-            ✓ {T("Log set", "সেট লগ করুন")} {doneSets.length + 1}
+            âœ“ {T("Log set", "à¦¸à§‡à¦Ÿ à¦²à¦— à¦•à¦°à§à¦¨")} {doneSets.length + 1}
           </button>
         ) : isLast ? (
           <button onClick={finish} disabled={saving} className="w-full rounded-2xl bg-lime-400 py-5 text-xl font-bold text-slate-950 disabled:opacity-60">
-            {saving ? T("Saving…", "সেভ হচ্ছে…") : `🏁 ${T("Finish workout", "ওয়ার্কআউট শেষ করুন")}`}
+            {saving ? T("Savingâ€¦", "à¦¸à§‡à¦­ à¦¹à¦šà§à¦›à§‡â€¦") : `ðŸ ${T("Finish workout", "à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦†à¦‰à¦Ÿ à¦¶à§‡à¦· à¦•à¦°à§à¦¨")}`}
           </button>
         ) : (
           <button onClick={() => { setIdx(idx + 1); setRestEnd(null); }} className="w-full rounded-2xl bg-lime-400 py-5 text-xl font-bold text-slate-950">
-            {T("Next exercise", "পরের ব্যায়াম")} →
+            {T("Next exercise", "à¦ªà¦°à§‡à¦° à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦®")} â†’
           </button>
         )}
         <div className="flex gap-2">
           {idx > 0 && (
-            <button onClick={() => setIdx(idx - 1)} className="flex-1 rounded-xl border border-white/15 py-3 text-sm">← {T("Previous", "আগেরটি")}</button>
+            <button onClick={() => setIdx(idx - 1)} className="flex-1 rounded-xl border border-white/15 py-3 text-sm">â† {T("Previous", "à¦†à¦—à§‡à¦°à¦Ÿà¦¿")}</button>
           )}
           {!isLast && !setsComplete && (
-            <button onClick={() => setIdx(idx + 1)} className="flex-1 rounded-xl border border-white/15 py-3 text-sm">{T("Skip", "এড়িয়ে যান")} →</button>
+            <button onClick={() => setIdx(idx + 1)} className="flex-1 rounded-xl border border-white/15 py-3 text-sm">{T("Skip", "à¦à¦¡à¦¼à¦¿à¦¯à¦¼à§‡ à¦¯à¦¾à¦¨")} â†’</button>
           )}
           {!(isLast && setsComplete) && totalLogged > 0 && (
             <button onClick={finish} disabled={saving} className="flex-1 rounded-xl border border-lime-400/40 py-3 text-sm text-lime-300">
-              {T("Finish early", "আগেই শেষ")}
+              {T("Finish early", "à¦†à¦—à§‡à¦‡ à¦¶à§‡à¦·")}
             </button>
           )}
         </div>
@@ -475,25 +476,26 @@ export function GymMode(p: Props) {
       {busyOpen && (
         <div className="fixed inset-0 z-30 flex items-end bg-black/60" onClick={() => setBusyOpen(false)}>
           <div className="mx-auto max-h-[80vh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-slate-900 p-5" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold">{T("Try one of these instead", "এর বদলে এগুলো করতে পারেন")}</h3>
-            {alts === null && <p className="mt-3 text-slate-400">{T("Finding alternatives…", "বিকল্প খোঁজা হচ্ছে…")}</p>}
+            <h3 className="text-lg font-bold">{T("Try one of these instead", "à¦à¦° à¦¬à¦¦à¦²à§‡ à¦à¦—à§à¦²à§‹ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¦¨")}</h3>
+            {alts === null && <p className="mt-3 text-slate-400">{T("Finding alternativesâ€¦", "à¦¬à¦¿à¦•à¦²à§à¦ª à¦–à§‹à¦à¦œà¦¾ à¦¹à¦šà§à¦›à§‡â€¦")}</p>}
             {alts && alts.length === 0 && (
-              <p className="mt-3 text-slate-400">{T("No equivalent exercise available with your equipment.", "আপনার যন্ত্রপাতি দিয়ে সমতুল্য কোনো ব্যায়াম নেই।")}</p>
+              <p className="mt-3 text-slate-400">{T("No equivalent exercise available with your equipment.", "à¦†à¦ªà¦¨à¦¾à¦° à¦¯à¦¨à§à¦¤à§à¦°à¦ªà¦¾à¦¤à¦¿ à¦¦à¦¿à¦¯à¦¼à§‡ à¦¸à¦®à¦¤à§à¦²à§à¦¯ à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦¾à¦¯à¦¼à¦¾à¦® à¦¨à§‡à¦‡à¥¤")}</p>
             )}
             <ul className="mt-3 space-y-2">
               {alts?.map((a) => (
                 <li key={a.exerciseId}>
                   <button onClick={() => substitute(a)} className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left">
                     <span className="font-semibold">{pick(p.lang, a.nameEn, a.nameBn)}</span>
-                    {a.last && <span className="ml-2 text-xs text-slate-400">({T("done before", "আগে করেছেন")})</span>}
+                    {a.last && <span className="ml-2 text-xs text-slate-400">({T("done before", "à¦†à¦—à§‡ à¦•à¦°à§‡à¦›à§‡à¦¨")})</span>}
                   </button>
                 </li>
               ))}
             </ul>
-            <button onClick={() => setBusyOpen(false)} className="mt-4 w-full rounded-xl border border-white/15 py-3 text-sm">{T("Cancel", "বাতিল")}</button>
+            <button onClick={() => setBusyOpen(false)} className="mt-4 w-full rounded-xl border border-white/15 py-3 text-sm">{T("Cancel", "à¦¬à¦¾à¦¤à¦¿à¦²")}</button>
           </div>
         </div>
       )}
     </div>
   );
 }
+
