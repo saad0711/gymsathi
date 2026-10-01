@@ -1,4 +1,4 @@
-# GymSathi
+﻿# GymSathi
 
 GymSathi is a calm, beginner-first workout companion for Bangladeshi Android users. It turns a short onboarding flow into a rule-based plan, guides the user through Gym Mode, and makes progress visible over the first 90 days.
 
@@ -35,32 +35,36 @@ The UI was rebuilt as a dark, editorial fitness system:
 - Next.js App Router and React
 - TypeScript
 - Tailwind CSS v4
-- Drizzle ORM with PostgreSQL
+- Drizzle ORM with Supabase Postgres
 - Local session and seed data helpers included in src/lib
 
-## Run locally
+## Run locally with Supabase
 
-1. Install Node.js 20 or newer and PostgreSQL.
-2. Install dependencies:
+1. Create a Supabase project at https://supabase.com/dashboard.
+2. In the project dashboard, open **Connect** and copy the **Session pooler** connection string. This project uses a server-side Drizzle connection, and the session pooler works well for local IPv4 networks.
+3. Create `.env.local` in the project root:
+
+   ~~~env
+   DATABASE_URL=postgresql://postgres.[PROJECT-REF]:[YOUR-PASSWORD]@[POOLER-HOST]:5432/postgres?sslmode=require
+   ~~~
+
+   Replace the placeholders with the exact values from Supabase. URL-encode reserved characters in the password, such as @, #, ?, &, or spaces.
+4. Install dependencies and apply the schema:
 
    ~~~bash
    npm install
+   npx drizzle-kit push
    ~~~
 
-3. Create .env.local with a PostgreSQL connection string:
-
-   ~~~env
-   DATABASE_URL=postgres://user:password@localhost:5432/gymsathi
-   ~~~
-
-4. Push the Drizzle schema and start the app:
+5. Start the app:
 
    ~~~bash
-   npx drizzle-kit push
    npm run dev
    ~~~
 
 Open http://localhost:3000.
+
+The runtime pool is created in src/db/index.ts; Drizzle reads the same DATABASE_URL through drizzle.config.ts. No Supabase service-role key is required for this server-side Postgres connection. Keep database credentials in .env.local and never commit them.
 
 ## Useful scripts
 
@@ -74,14 +78,14 @@ npm run typecheck # TypeScript check
 
 ## Repository map
 
-- src/app/page.tsx — marketing landing page
-- src/app/onboarding — guest onboarding flow
-- src/app/app — authenticated/guest product shell and core screens
-- src/components — shared UI, motion, Gym Mode, onboarding, and form components
-- src/lib/plan-generator.ts — rule-based plan engine
-- src/lib/auditor.ts — manual Plan Auditor rules
-- src/lib/seed-data — local exercise and food seed data
-- GYM1.1.md — revised product requirements
+- src/app/page.tsx â€” marketing landing page
+- src/app/onboarding â€” guest onboarding flow
+- src/app/app â€” authenticated/guest product shell and core screens
+- src/components â€” shared UI, motion, Gym Mode, onboarding, and form components
+- src/lib/plan-generator.ts â€” rule-based plan engine
+- src/lib/auditor.ts â€” manual Plan Auditor rules
+- src/lib/seed-data â€” local exercise and food seed data
+- GYM1.1.md â€” revised product requirements
 
 ## Safety boundary
 
@@ -90,3 +94,4 @@ GymSathi provides general fitness information, not medical advice. The onboardin
 ## License
 
 This project is prepared as a private pilot repository. Add the license that matches your ownership and distribution decision before making the repository public.
+
